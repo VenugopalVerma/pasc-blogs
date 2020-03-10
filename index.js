@@ -15,7 +15,7 @@ if (!process.env.JWT_KEY) {
 
 mongoose
   .connect(
-    "mongodb+srv://venugopal:<password>@cluster0-ay5f2.gcp.mongodb.net/test",
+    "mongodb+srv://{username}:<password>@cluster0-ay5f2.gcp.mongodb.net/test",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
