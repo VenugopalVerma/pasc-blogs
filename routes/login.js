@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 
             const verified = await bcrypt.compare(req.body.password, user.password);
             // user = new User(_.pick(req.body, ['displayName', 'email', 'password']));
-            if(!verified) return res.status(401).send('Venugopal');
+            if(!verified) return res.status(401).send('Login failed');
             console.log('Login successful', verified);
             console.log('User', user);
             const token = jwt.sign({ id: user._id, isAdmin: user.admin }, process.env.JWT_KEY);

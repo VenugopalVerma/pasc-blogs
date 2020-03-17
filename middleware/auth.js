@@ -16,9 +16,7 @@ function isAuthenticated(req,res,next){
 }
 
 function isAdmin(req,res,next){
-
-    if(!req.payload.isAdmin) return res.status(401).send('Not authorized');
-
+    if(!req.payload.isAdmin) return res.status(401).send('Not Admin');
     next();
 }
 

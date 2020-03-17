@@ -3,7 +3,7 @@ const userSchema = require('./user');
 const Joi = require('@hapi/joi');
 Joi.objectId = require('joi-objectid')(Joi);
 
-const blogSchema = new mongoose.Schema({
+const projectSchema = new mongoose.Schema({
     // user_id: mongoose.Types.ObjectId,
     approve: Boolean,
     author: {
@@ -19,14 +19,14 @@ const blogSchema = new mongoose.Schema({
     heading: String,
     // id: String,
     image: String,
-    subHeading: String
-
+    subHeading: String,
+    link: String
 });
 
-const Blog = mongoose.model('Blog',blogSchema);
+const Project = mongoose.model('Project',projectSchema);
 
 
-const validateBlog = (data) => {
+const validateProject = (data) => {
     const schema = Joi.object( {
         // author: string,
         author: Joi.object({
@@ -47,5 +47,5 @@ const validateBlog = (data) => {
     return schema.validate(data);
 }
 
-module.exports.Blog = Blog;
-module.exports.validateBlog = validateBlog;
+module.exports.Project = Project;
+module.exports.validateProject = validateProject;

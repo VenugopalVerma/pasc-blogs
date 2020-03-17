@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const crypto = require('crypto');
 const Joi = require('@hapi/joi');
 
 const userSchema = new mongoose.Schema({
@@ -15,8 +16,15 @@ const userSchema = new mongoose.Schema({
     emailVerified: Boolean,
     photoUrl: String,
     password: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: String,
     // uid: String
 });
+
+userSchema.methods.generateResetPasswordToken = function(){
+    this.resetPasswordToken = crypto.randomBytes(20).toString('hex');
+    this.resetPasswordExpires = Date.now() + 3600000 // 1 hour;
+};
 
 const User = mongoose.model('user',userSchema);
 
